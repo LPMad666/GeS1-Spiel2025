@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3476607814190493468}
   - component: {fileID: 6982706655528898143}
   - component: {fileID: 5069135569952009001}
+  - component: {fileID: 8818256059408627592}
   m_Layer: 0
   m_Name: EnemyType1
   m_TagString: Untagged
@@ -151,5 +152,19 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &8818256059408627592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166017063260614873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd1d27e469b41449b36348e7c5073a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxhealth: 20
+  damage: 10

@@ -30,9 +30,6 @@ public class BulletSpawn : MonoBehaviour
     public void SetDirection(Vector3 dir) //Setzt die Richtung der Kugel
     {
         direction = dir.normalized;
-
-        //kugel soll in die Richtung schauen
-        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
 }
