@@ -4,6 +4,7 @@ public class WaveSpawnerSimple : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject spawnPoint;
+    public GameObject playerTarget;
     public float startTime;
     public float endTime;
     public float spawnRate;
@@ -29,7 +30,8 @@ public class WaveSpawnerSimple : MonoBehaviour
     {
         // Spawn an enemy at the spawn point 
         Debug.Log("Spawned Enemy started");
-        Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+        enemyInstance.GetComponent<EnemyMovement>().playerTarget = playerTarget;
     }
 
     void CancelSpawn()
