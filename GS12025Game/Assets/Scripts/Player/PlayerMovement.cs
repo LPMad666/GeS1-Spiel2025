@@ -11,12 +11,14 @@ public class SimpleMovement : MonoBehaviour
     [SerializeField]
     private float jumpVelocity;
 
+    private Rigidbody rb;
+    private bool isGrounded;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>(); // Holt die Rigidbody-Komponente des GameObjects 
     }
 
     // Update is called once per frame
@@ -24,6 +26,11 @@ public class SimpleMovement : MonoBehaviour
     {
         this.Movement();
         this.Rotation();
+
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
     }
 
     private void Rotation()  //Rotation Kamera um die Y Achse.
@@ -50,9 +57,19 @@ public class SimpleMovement : MonoBehaviour
         {
             transform.Translate(speedTranslation * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.Space))
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse); // Sprungkraft anwenden
+        isGrounded = false; // Spieler ist in der Luft
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            transform.Translate(0, jumpVelocity * Time.deltaTime, 0);
+            isGrounded = true; // Spieler ist wieder auf dem Boden
         }
     }
 }
