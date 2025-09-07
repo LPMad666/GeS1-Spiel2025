@@ -3,13 +3,13 @@ using UnityEngine;
 public class SimpleMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speedTranslation = 0.1f;
+    private float speedTranslation;
 
     [SerializeField]
-    private float speedRotation = 20f;
+    private float speedRotation;
 
     [SerializeField]
-    private float jumpVelocity = 2f;
+    private float jumpVelocity;
 
 
 
