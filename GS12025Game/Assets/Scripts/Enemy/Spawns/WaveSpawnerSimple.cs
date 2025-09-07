@@ -43,4 +43,12 @@ public class WaveSpawnerSimple : MonoBehaviour
         // Invoke again after timeBetweenWaves to restart spawning
         Invoke("RestartSpawning", timeBetweenWaves);
     }
+
+    void RestartSpawning()
+    {
+        // Start spawning enemies after startTime and repeat every spawnRate seconds
+        InvokeRepeating("Spawn", startTime, spawnRate);
+        // Cancel spawning after endTime seconds
+        Invoke("CancelSpawn", endTime);
+    }
 }
