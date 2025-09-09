@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
+    public bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +34,13 @@ public class PlayerStats : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return; // verhindert Doppelaufruf
+        isDead = true;
+
         Debug.Log("Player has died.");
+
+        // Steuerung vom Spieler ausschalten.
+        GetComponent<SimpleMovement>().enabled = false;
     }
 
     public int GetCurrentHealth()
