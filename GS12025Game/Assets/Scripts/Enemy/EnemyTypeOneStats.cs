@@ -48,7 +48,7 @@ public class EnemyTypeOneStats : MonoBehaviour
         // Abspielen des Schussgeräuschs
         if (dyingSound != null)
         {
-            AudioSource.PlayClipAtPoint(dyingSound, transform.position);
+            SoundManager.Instance.PlaySound(dyingSound, transform.position);
         }
 
         Destroy(this.gameObject);

@@ -41,6 +41,8 @@ public class PlayerStats : MonoBehaviour
 
         // Steuerung vom Spieler ausschalten.
         GetComponent<SimpleMovement>().enabled = false;
+        //Schuss vom Spieler ausschalten.
+        GetComponent<PlayerShooting>().enabled = false;
     }
 
     public int GetCurrentHealth()
