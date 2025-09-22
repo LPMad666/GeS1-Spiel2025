@@ -7,12 +7,19 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
+    [Header("UI Elements")]
+    public GameObject deathScreen; // UI Element für den Todesscreen
+
     public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth; // Initialize current health to max health at the start
+
+        // DeathScreen am Anfang unsichtbar machen
+        if (deathScreen != null)
+            deathScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,6 +50,13 @@ public class PlayerStats : MonoBehaviour
         GetComponent<SimpleMovement>().enabled = false;
         //Schuss vom Spieler ausschalten.
         GetComponent<PlayerShooting>().enabled = false;
+
+        // Hier können weitere Aktionen beim Tod des Spielers hinzugefügt werden, z.B. Animationen, Neustart des Levels, etc.
+        // Death Screen anzeigen
+        if (deathScreen != null)
+            deathScreen.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None; //Cursor wieder sichtbar machen
     }
 
     public int GetCurrentHealth()
