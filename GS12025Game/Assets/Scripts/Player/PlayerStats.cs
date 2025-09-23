@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("UI Elements")]
     public GameObject deathScreen; // UI Element für den Todesscreen
+    public UIHitEffect hitEffect; //direkt Feld Überweisung statt FindObject
 
     public bool isDead = false;
 
@@ -33,6 +34,14 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= damage; // Reduce current health by the damage amount
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp health between 0 and maxHealth to avoid negative values
         Debug.Log("Player took " + damage + " damage. Current health: " + currentHealth);
+
+        //Hit Effect triggern
+      //  GetComponent<PlayerHitEffect>().TriggerHitEffect();
+
+        // Bildschirm Overlay triggern 
+        if  (hitEffect != null) 
+            hitEffect.TriggerHitEffect();
+
         if (currentHealth <= 0)
         {
             Die(); // Call Die method if health drops to zero or below
