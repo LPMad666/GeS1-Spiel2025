@@ -73,4 +73,10 @@ public class PlayerStats : MonoBehaviour
         return currentHealth; // Return the current health value
     }
 
+    public int GetCurrentArmor()
+    {
+        // Placeholder for armor logic, currently returns 0
+        return 0;
+    }
+
 }

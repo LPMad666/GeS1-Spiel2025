@@ -57,6 +57,10 @@ public class SimpleMovement : MonoBehaviour
         {
             transform.Translate(speedTranslation * Time.deltaTime, 0, 0);
         }
+        if (Input.GetKey(KeyCode.LeftShift))  //Sprinten
+        {
+            transform.Translate(0, 0, speedTranslation * 2 * Time.deltaTime);
+        }
     }
 
     void Jump()

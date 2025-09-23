@@ -8032,8 +8032,8 @@ GameObject:
   - component: {fileID: 5829150516778842420}
   - component: {fileID: -8261830269196970696}
   - component: {fileID: -3332592572292658468}
-  - component: {fileID: 8100653850592355168}
   - component: {fileID: -6220378101658809059}
+  - component: {fileID: 1670785281634554803}
   m_Layer: 0
   m_Name: Nightmare Beetle
   m_TagString: Untagged
@@ -8050,8 +8050,8 @@ Transform:
   m_GameObject: {fileID: 1987720806421918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: 0, y: -0.063, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4767679132218902}
@@ -8092,7 +8092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f8c809553c477478967c7849f5e530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 20
   attackSpeed: 2
   attackRange: 3
   playerTarget: {fileID: 0}
@@ -8122,33 +8122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd1d27e469b41449b36348e7c5073a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 100
+  maxhealth: 50
   damage: 10
   dyingSound: {fileID: 0}
   dyingAudioSource: {fileID: 0}
---- !u!136 &8100653850592355168
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987720806421918}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  isDead: 0
 --- !u!54 &-6220378101658809059
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8174,5 +8152,26 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &1670785281634554803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987720806421918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3, z: 2.2}
+  m_Center: {x: 0, y: 1.63, z: 0.2}

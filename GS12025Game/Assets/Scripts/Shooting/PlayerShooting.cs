@@ -50,4 +50,8 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    public int GetCurrentAmmo()
+    {
+        return 0; // Placeholder method for ammo count
+    }
 }
