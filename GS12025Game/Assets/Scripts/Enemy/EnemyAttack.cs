@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -16,13 +17,17 @@ public class EnemyAttack : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerTarget != null) {
+        // The check for gameObject.activeInHierarchy will be false after the enemy dies
+        if (playerTarget != null && gameObject.activeInHierarchy)
+        {
+            EnemyTypeOneStats stats = GetComponent<EnemyTypeOneStats>();
+            if (stats != null && stats.isDead) return;
 
             float distance = Vector3.Distance(transform.position, playerTarget.transform.position);
 
@@ -35,31 +40,35 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackPlayer()
     {
-        if (canAttack && playerTarget != null)
-        {
-            // Player Stats holen und Schaden machen
-            PlayerStats player = playerTarget.GetComponent<PlayerStats>();
-            if (player != null)
-            {
-                    player.TakeDamage(damage);
-            }
+        if (!canAttack || playerTarget == null) return;  //Checken das der Enemy angreifen kann & er ein Target hat. 
 
-            if(player.isDead == true)
-            {
-                canAttack = false;
-                Application.Quit();
-            }
-            else { 
-                //Attack sperren für Cooldown
-                canAttack = false;
-                StartCoroutine(AttackDelay());
-            }
+        canAttack = false;
+
+        //Player stats holen & Schaden machen
+        PlayerStats player = playerTarget.GetComponent<PlayerStats>();
+        if (player != null && !player.isDead)
+        {
+            player.TakeDamage(damage);
+            StartCoroutine(AttackDelay());
         }
+
     }
 
-    private IEnumerator AttackDelay()  
+    private IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(attackSpeed);
         canAttack = true;
     }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines(); //Cooldown für next Attack etc. abbrechen
+        canAttack = false; // Angriff sperren wenn tot
+    }
+
+    private void SetTarget(GameObject playerTarget)
+    {
+        this.playerTarget = playerTarget; //Gameobjekt übergabe als Player Target setzen. 
+    }
+
 }

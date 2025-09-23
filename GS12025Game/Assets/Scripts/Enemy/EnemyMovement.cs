@@ -15,10 +15,14 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerTarget != null) // Check if playerTarget is assigned
+        if (playerTarget != null) // Check if playerTarget is assigned
         {
             // Move the enemy towards the player
             transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, speedToMove * Time.deltaTime);
+        }
+        else
+        {
+            Debug.Log("Kein PlayerTarget gefunden");
         }
     }
 }

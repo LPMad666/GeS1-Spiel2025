@@ -38,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
         // Abspielen des Schussgeräuschs
         if (shootSound != null && shootingAudioSource != null)
         {
-            shootingAudioSource.PlayOneShot(shootSound);
+            SoundManager.Instance.PlaySound2D(shootSound);
         }
     }
 
