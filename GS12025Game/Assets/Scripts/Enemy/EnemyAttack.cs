@@ -66,4 +66,9 @@ public class EnemyAttack : MonoBehaviour
         canAttack = false; // Angriff sperren wenn tot
     }
 
+    private void SetTarget(GameObject playerTarget)
+    {
+        this.playerTarget = playerTarget; //Gameobjekt übergabe als Player Target setzen. 
+    }
+
 }
