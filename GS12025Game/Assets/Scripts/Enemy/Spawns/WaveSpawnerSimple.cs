@@ -12,8 +12,10 @@ public class WaveSpawnerSimple : MonoBehaviour
     public float timeBetweenWaves = 5.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
+        WaveManager.instance.AddWavespawner(this);
         // Start spawning enemies after startTime and repeat every spawnRate seconds
         InvokeRepeating("Spawn", startTime, spawnRate);
         // Cancel spawning after endTime seconds
@@ -40,6 +42,9 @@ public class WaveSpawnerSimple : MonoBehaviour
         // Cancel the repeated spawning of enemies after endTime
         CancelInvoke("Spawn");
         Debug.Log("Spawned Enemy cancelled");
+
+        //To delete from waveManager 
+        // WaveManager.instance.RemoveWavespawner(this);
        
         // Invoke again after timeBetweenWaves to restart spawning
         Invoke("RestartSpawning", timeBetweenWaves);

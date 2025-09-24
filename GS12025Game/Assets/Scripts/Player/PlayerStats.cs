@@ -115,6 +115,15 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player healed by " + healAmount + ". Current health: " + currentHealth);
     }
 
+    public void ArmorReplenish(int armorAmount)
+    {
+        if (isDead) return; //Dead players don't get armor
+
+        currentArmor += armorAmount;
+        currentArmor = Mathf.Clamp(currentArmor, 0, maxArmor); //Clamp Armor between 0 and maxArmor
+        Debug.Log("Player gained " +  armorAmount + ". Current Armor: " + currentArmor);
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth; // Return the current health value
