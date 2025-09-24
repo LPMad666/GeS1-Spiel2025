@@ -34,7 +34,7 @@ public class GUIManager : MonoBehaviour
         // Update the ammo text with the current ammo from PlayerShooting
         if (shooting != null && AmmoText != null)
         {
-          AmmoText.text = "Ammo: " + shooting.GetCurrentAmmo();
+          AmmoText.text = "Ammo: " + playerStats.GetCurrentAmmo();
         }
           else
           {

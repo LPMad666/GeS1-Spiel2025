@@ -9,7 +9,6 @@ public class BulletSpawn : MonoBehaviour
     [SerializeField]
     private float speed = 0.1f;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +24,7 @@ public class BulletSpawn : MonoBehaviour
     private void BulletShoot() //Bewegung der Kugel in die Richtung
     {
         transform.Translate(direction * speed * Time.deltaTime);
+        
     }
 
     public void SetDirection(Vector3 dir) //Setzt die Richtung der Kugel

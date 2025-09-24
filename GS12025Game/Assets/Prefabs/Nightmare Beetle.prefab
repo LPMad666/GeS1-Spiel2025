@@ -8051,7 +8051,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.063, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4767679132218902}
@@ -8108,7 +8108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc496b8b11d5841967c4214174843b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedToMove: 3
+  speedToMove: 10
   playerTarget: {fileID: 0}
 --- !u!114 &-3332592572292658468
 MonoBehaviour:
@@ -8124,7 +8124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 50
   damage: 10
-  dyingSound: {fileID: 0}
+  dyingSound: {fileID: 8300000, guid: 25bc57f68c4d91c4dacfec60d3ca1274, type: 3}
   dyingAudioSource: {fileID: 0}
   isDead: 0
 --- !u!54 &-6220378101658809059
@@ -8173,5 +8173,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3, z: 2.2}
+  m_Size: {x: 1.5, y: 3, z: 2.2}
   m_Center: {x: 0, y: 1.63, z: 0.2}

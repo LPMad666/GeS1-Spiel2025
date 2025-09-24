@@ -25,24 +25,25 @@ public class SimpleMovement : MonoBehaviour
     void Update()
     {
         this.Movement();
-        this.Rotation();
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
-    }
 
-    private void Rotation()  //Rotation Kamera um die Y Achse.
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-        transform.Rotate(0, mouseX * (speedRotation * Time.deltaTime), 0);
+        if (Input.GetKey(KeyCode.R))
+        {
+            GetComponent<PlayerShooting>().Reload(30);
+        }
     }
 
     void Movement()
     {
         if (Input.GetKey(KeyCode.W))
         {
+            if (Input.GetKey(KeyCode.LeftShift))  //Sprinten
+                transform.Translate(0, 0, speedTranslation * 2 * Time.deltaTime);
+            else
             transform.Translate(0, 0, speedTranslation * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
@@ -56,10 +57,6 @@ public class SimpleMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(speedTranslation * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.LeftShift))  //Sprinten
-        {
-            transform.Translate(0, 0, speedTranslation * 2 * Time.deltaTime);
         }
     }
 

@@ -1,11 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     [Header("Player Stats")]
     public int maxHealth = 100;
+    public int maxArmor = 50;
+    public int maxAmmo = 30;
     private int currentHealth;
+    private int currentArmor;
+    private int currentAmmo;
 
     [Header("UI Elements")]
     public GameObject deathScreen; // UI Element für den Todesscreen
@@ -17,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth; // Initialize current health to max health at the start
+        currentArmor = maxArmor;   // Initialize current armor to max armor at the start
+        currentAmmo = maxAmmo; // Initialize current ammo to max ammo at the start
 
         // DeathScreen am Anfang unsichtbar machen
         if (deathScreen != null)
@@ -31,9 +38,19 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage; // Reduce current health by the damage amount
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp health between 0 and maxHealth to avoid negative values
-        Debug.Log("Player took " + damage + " damage. Current health: " + currentHealth);
+        if (currentArmor > 0)
+        {
+            int armorDamage = Mathf.Min(damage, currentArmor); // Calculate how much damage can be absorbed by armor
+            currentArmor -= armorDamage; // Reduce current armor by the absorbed damage
+            damage -= armorDamage; // Reduce the remaining damage
+            Debug.Log("Player's armor absorbed " + armorDamage + " damage. Current armor: " + currentArmor);
+        }
+        else
+        {
+            currentHealth -= damage; // Reduce current health by the damage amount
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp health between 0 and maxHealth to avoid negative values
+            Debug.Log("Player took " + damage + " damage. Current health: " + currentHealth);
+        }
 
         //Hit Effect triggern
       //  GetComponent<PlayerHitEffect>().TriggerHitEffect();
@@ -68,6 +85,27 @@ public class PlayerStats : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; //Cursor wieder sichtbar machen
     }
 
+    public void ReduceAmmo(int reduce)
+    {
+        currentAmmo = currentAmmo - reduce;
+    }
+
+    public bool ReloadAmmo(int ammo)
+    {
+        if (currentAmmo < maxAmmo)
+        {
+            currentAmmo += ammo;
+            currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo); // Clamp ammo between 0 and maxAmmo to avoid exceeding max
+            Debug.Log("Player reloaded " + ammo + " ammo. Current ammo: " + currentAmmo);
+            return true; // Reload successful
+        }
+        else
+        {
+            Debug.Log("Ammo is already full. Current ammo: " + currentAmmo);
+            return false; // Ammo is already full
+        }
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth; // Return the current health value
@@ -76,7 +114,17 @@ public class PlayerStats : MonoBehaviour
     public int GetCurrentArmor()
     {
         // Placeholder for armor logic, currently returns 0
-        return 0;
+        return currentArmor;
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo; // Return the current ammo count
+    }
+
+    public Vector3 GetLookDirection()
+    {
+        return transform.forward; // Return the forward direction of the player
     }
 
 }
