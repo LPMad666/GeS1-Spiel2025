@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
+    public GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,8 +24,10 @@ public class GameMode : MonoBehaviour
        */
        if(ScoreManager.instance.score >= 1000)
         {
+            //Load Win Scene
             SceneManager.LoadScene("WinScene");
             Debug.Log("You win");
         }
     }
+
 }
