@@ -3,26 +3,35 @@ using UnityEngine;
 public class HealthPack : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject playerTarget; // Reference to the player's transform
     public int healthAmount = 20; // Amount of health the pack restores
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ItemManager parentRef = GetComponentInParent<ItemManager>(); // Get reference to ItemManager in parent
+
+        if(parentRef != null)
+        {
+            playerTarget = parentRef.player; // Assign the player's transform from ItemManager
+        }
+        else
+        {
+            Debug.LogError("ItemManager not found in parent hierarchy.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject == playerTarget)
         {
-            PlayerStats playerStats = player.GetComponent<PlayerStats>();
+            PlayerStats playerStats = playerTarget.GetComponent<PlayerStats>();
             if (playerStats != null && !playerStats.isDead)
             {
                 // Heal the player

@@ -106,6 +106,15 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void Heal(int healAmount)
+    {
+        if (isDead) return; // Dead players can't be healed
+
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp health between 0 and maxHealth to avoid exceeding max
+        Debug.Log("Player healed by " + healAmount + ". Current health: " + currentHealth);
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth; // Return the current health value
