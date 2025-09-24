@@ -27,7 +27,7 @@ public class HealthPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(rotationSpeedX, rotationSpeedY, rotationSpeedZ);
+        transform.Rotate(rotationSpeedX, rotationSpeedY, rotationSpeedZ); // Rotate the health pack for visual effect
     }
 
     private void OnTriggerEnter(Collider other)
