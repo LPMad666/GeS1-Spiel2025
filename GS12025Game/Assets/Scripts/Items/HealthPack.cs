@@ -6,6 +6,9 @@ public class HealthPack : MonoBehaviour
     private GameObject playerTarget; // Reference to the player's transform
     public int healthAmount = 20; // Amount of health the pack restores
 
+    [SerializeField]
+    float rotationSpeedX, rotationSpeedY, rotationSpeedZ;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +27,7 @@ public class HealthPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.Rotate(rotationSpeedX, rotationSpeedY, rotationSpeedZ);
     }
 
     private void OnTriggerEnter(Collider other)
