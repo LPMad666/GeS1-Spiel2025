@@ -5,9 +5,9 @@ public class WaveSpawnerSimple : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject spawnPoint;
     public GameObject playerTarget;
-    public float startTime;
-    public float endTime;
-    public float spawnRate;
+    public float startTime;     // Time in seconds before spawning starts
+    public float endTime; // Time in seconds after which spawning stops
+    public float spawnRate; // Time in seconds between spawns
 
     public float timeBetweenWaves = 5.0f;
 

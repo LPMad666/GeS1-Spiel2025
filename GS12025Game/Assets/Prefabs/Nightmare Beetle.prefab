@@ -8096,7 +8096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   attackSpeed: 2
-  attackRange: 3
+  attackRange: 3.5
   playerTarget: {fileID: 0}
 --- !u!114 &-8261830269196970696
 MonoBehaviour:
@@ -8110,7 +8110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc496b8b11d5841967c4214174843b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedToMove: 10
+  speedToMove: 20
   playerTarget: {fileID: 0}
 --- !u!114 &-3332592572292658468
 MonoBehaviour:
@@ -8125,7 +8125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxhealth: 50
-  damage: 10
   dyingSound: {fileID: 8300000, guid: 25bc57f68c4d91c4dacfec60d3ca1274, type: 3}
   dyingAudioSource: {fileID: 0}
   isDead: 0

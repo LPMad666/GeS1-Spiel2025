@@ -6,7 +6,6 @@ public class EnemyTypeOneStats : MonoBehaviour
     [Header("Enemy Type One Stats")]
     public int maxhealth = 100;
     private int currentHealth;
-    public int damage = 10;
 
     [Header("Audio Settings")]
     public AudioClip dyingSound; // mp3 Datei für Schussgeräusch

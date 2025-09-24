@@ -14,7 +14,13 @@ public class GameMode : MonoBehaviour
     {
         //Sauberer mit Delta Time zu arbeiten
         //Wenn die Enemy Liste leer ist, hat man gewonnen (Bei Endlos spawnen wie bei uns muss man anpassen)
-        if(EnemyManager.instance.GetEnemies().Count == 0 && WaveManager.instance.GetWaveSpawners().Count == 0)
+       /* if(EnemyManager.instance.GetEnemies().Count == 0 && WaveManager.instance.GetWaveSpawners().Count == 0)
+        {
+            SceneManager.LoadScene("WinScene");
+            Debug.Log("You win");
+        }
+       */
+       if(ScoreManager.instance.score >= 1000)
         {
             SceneManager.LoadScene("WinScene");
             Debug.Log("You win");
