@@ -50,24 +50,24 @@ public class PlayerShooting : MonoBehaviour
             // Instantiate erstellt eine Kopie des Prefabs an der Position und Rotation des zweiten und dritten Parameters
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, Quaternion.identity);
 
-            // 2. Kamera-Raycast von der Mitte des Screens
+            // Kamera-Raycast von der Mitte des Screens
             Camera cam = Camera.main;
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // Mitte des Bildschirms
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // Mitte des Bildschirms Ray erstellen
             Vector3 targetPoint;
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f)) // falls wir was treffen
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f)) // Raycast ausführen und prüfen, ob er etwas trifft
             {
-                targetPoint = hit.point;
+                targetPoint = hit.point; // Zielpunkt ist der getroffene Punkt
             }
-            else
+            else // Wenn nichts getroffen wird
             {
                 targetPoint = ray.GetPoint(1000f); // ein Punkt weit weg in Blickrichtung
             }
 
-            // 3. Richtung berechnen vom Spawnpunkt zum Zielpunkt
+            // Richtung berechnen vom Spawnpunkt zum Zielpunkt
             Vector3 direction = (targetPoint - bulletSpawnPoint.transform.position).normalized;
 
-            // 4. Kugel-Richtung setzen
+            // Kugel-Richtung setzen
             bullet.GetComponent<BulletSpawn>().SetDirection(direction);
 
 
