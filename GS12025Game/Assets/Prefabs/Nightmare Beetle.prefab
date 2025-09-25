@@ -8098,6 +8098,7 @@ MonoBehaviour:
   attackSpeed: 2
   attackRange: 3.5
   playerTarget: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 23d22526d08ac2040b7c311ebb8ce541, type: 3}
 --- !u!114 &-8261830269196970696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8125,7 +8126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxhealth: 50
-  dyingSound: {fileID: 8300000, guid: 25bc57f68c4d91c4dacfec60d3ca1274, type: 3}
+  dyingSound: {fileID: 8300000, guid: c9b8318595d6a4844a22def9ee1d7eeb, type: 3}
   dyingAudioSource: {fileID: 0}
   isDead: 0
 --- !u!114 &2158918674478192855

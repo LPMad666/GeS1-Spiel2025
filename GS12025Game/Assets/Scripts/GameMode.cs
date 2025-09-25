@@ -22,7 +22,7 @@ public class GameMode : MonoBehaviour
             Debug.Log("You win");
         }
        */
-       if(ScoreManager.instance.score >= 1800)
+       if(ScoreManager.instance.score >= 2500)
         {
             //Load Win Scene
             SceneManager.LoadScene("WinScene");

@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Audio Settings")]
     public AudioClip shootSound; // mp3 Datei für Schussgeräusch
+    public AudioClip reloadSound; // mp3 Datei für Nachladegeräusch
     public AudioSource shootingAudioSource; //AudioSource Komponente zum Abspielen des Schussgeräuschs
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,8 +49,27 @@ public class PlayerShooting : MonoBehaviour
             // bulletPrefab ist das Eingabefeld im Inspector, dem wir die Kugel zuweisen
             // Instantiate erstellt eine Kopie des Prefabs an der Position und Rotation des zweiten und dritten Parameters
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, Quaternion.identity);
-            Vector3 playerForwardVector = transform.forward; //Richtung des Spielers
-            bullet.GetComponent<BulletSpawn>().SetDirection(playerForwardVector); //Setzt die Richtung der Kugel auf die Blickrichtung des Spielers
+
+            // 2. Kamera-Raycast von der Mitte des Screens
+            Camera cam = Camera.main;
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // Mitte des Bildschirms
+            Vector3 targetPoint;
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f)) // falls wir was treffen
+            {
+                targetPoint = hit.point;
+            }
+            else
+            {
+                targetPoint = ray.GetPoint(1000f); // ein Punkt weit weg in Blickrichtung
+            }
+
+            // 3. Richtung berechnen vom Spawnpunkt zum Zielpunkt
+            Vector3 direction = (targetPoint - bulletSpawnPoint.transform.position).normalized;
+
+            // 4. Kugel-Richtung setzen
+            bullet.GetComponent<BulletSpawn>().SetDirection(direction);
+
 
             // Abspielen des Schussgeräuschs
             if (shootSound != null && shootingAudioSource != null)
@@ -108,6 +128,11 @@ public class PlayerShooting : MonoBehaviour
         isReloading = true;
         
         Debug.Log("Reloading...");
+        //play reload sound here if needed
+        if (reloadSound != null && shootingAudioSource != null)
+        {
+            SoundManager.Instance.PlaySound2D(reloadSound);
+        }
         yield return new WaitForSeconds(reloadtime);
 
         if (GetComponent<PlayerStats>().ReloadAmmo(ammo))

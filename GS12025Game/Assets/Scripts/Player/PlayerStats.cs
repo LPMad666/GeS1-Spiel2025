@@ -16,6 +16,10 @@ public class PlayerStats : MonoBehaviour
     public GameObject deathScreen; // UI Element für den Todesscreen
     public UIHitEffect hitEffect; //direkt Feld Überweisung statt FindObject
 
+    [Header("Audio Settings")]
+    public AudioClip hitSound; // mp3 Datei für Treffergeräusch
+    public AudioClip deathSound; // mp3 Datei für Todesgeräusch
+
     public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +42,12 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //Play Hit Sound
+        if (hitSound != null)
+        {
+            SoundManager.Instance.PlaySound(hitSound, transform.position);
+        }
+
         if (currentArmor > 0)
         {
             int armorDamage = Mathf.Min(damage, currentArmor); // Calculate how much damage can be absorbed by armor

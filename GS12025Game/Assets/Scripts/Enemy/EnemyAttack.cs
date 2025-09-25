@@ -12,6 +12,9 @@ public class EnemyAttack : MonoBehaviour
 
     public GameObject playerTarget;
 
+    [Header("Audio Settings")]
+    public AudioClip attackSound; // mp3 Datei für Angriffsgeräusch
+
     private bool canAttack = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +51,11 @@ public class EnemyAttack : MonoBehaviour
         PlayerStats player = playerTarget.GetComponent<PlayerStats>();
         if (player != null && !player.isDead)
         {
+            // Abspielen des Angriffsgeräuschs
+            if (attackSound != null)
+            {
+                SoundManager.Instance.PlaySound(attackSound, transform.position);
+            }
             player.TakeDamage(damage);
             StartCoroutine(AttackDelay());
         }
