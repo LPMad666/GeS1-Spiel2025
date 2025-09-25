@@ -2296,7 +2296,7 @@ Transform:
   m_GameObject: {fileID: 880729489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 77.10974, y: 3.5416698, z: 21.160156}
+  m_LocalPosition: {x: 77.10974, y: 3.78, z: 21.160156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2816,7 +2816,7 @@ Transform:
   m_GameObject: {fileID: 1127355981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.69873, y: 2.854599, z: 7.6795654}
+  m_LocalPosition: {x: 79.69873, y: 3.06, z: 7.6795654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3136,7 +3136,7 @@ Transform:
   m_GameObject: {fileID: 1217907390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.8, y: 159.29, z: 285.5}
+  m_LocalPosition: {x: -15.8, y: 151.1, z: 285.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3891,7 +3891,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516297162}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3946,7 +3946,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6311231806080598993, guid: a6634ab40844d8e45828d691da3fd4a2, type: 3}
   bulletSpawnPoint: {fileID: 306079693}
   reloadtime: 0.5
-  fireRate: 0.2
+  fireRate: 0.15
   shootSound: {fileID: 8300000, guid: bd3bc1236086f6547b6ddbd1e0ea7c0f, type: 3}
   reloadSound: {fileID: 8300000, guid: 38928439e30c3b140aee017746e28db6, type: 3}
   shootingAudioSource: {fileID: 0}
@@ -4326,7 +4326,7 @@ MonoBehaviour:
   playerTarget: {fileID: 1516297162}
   startTime: 4
   endTime: 6
-  spawnRate: 1
+  spawnRate: 2
   timeBetweenWaves: 3
 --- !u!4 &1677451655
 Transform:
@@ -4375,11 +4375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -4.7004013
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 155.1
+      value: 144.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4387,31 +4387,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7029187
+      value: 0.7025922
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.70740604
+      value: -0.70764637
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.046032555
+      value: -0.042177044
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.057992302
+      value: -0.061821803
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -91.035
+      value: -91.644
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -73.65201
+      value: -79.79001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 65.215
+      value: 71.354
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 5f2c01e38df26064a88a7ccbbd56592c, type: 3}
       propertyPath: m_Materials.Array.size

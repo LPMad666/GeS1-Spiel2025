@@ -6,28 +6,39 @@ public class EnemyMovement : MonoBehaviour
     public float speedToMove = 3.0f;
     public GameObject playerTarget;
 
+    private Rigidbody rb; // Reference to the Rigidbody component
     private Vector3 offset; // Random offset for more natural movement
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Generate a random offset to avoid direct line movement to the player X, Y, Z
-        offset = new Vector3(Random.Range(-7f, 7f), 0, Random.Range(-4f, 4f)); // Random offset in XZ plane
+        offset = new Vector3(Random.Range(-1.5f, 1.5f), 0, Random.Range(-1.5f, 1.5f)); // Random offset in XZ plane
+
+        rb = GetComponent<Rigidbody>();
+
+        // Prevent drifting of enemies
+        rb.linearDamping = 2.0f; // Adjust drag to control sliding
+        rb.angularDamping = 2.0f; // Adjust angular drag to control rotation sliding
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (playerTarget != null) // Check if playerTarget is assigned
+        if (playerTarget != null)
         {
-            // Apply the offset to the player's position
             Vector3 targetPosition = playerTarget.transform.position + offset;
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            
 
-            // Rotate the enemy to face the player
-            transform.LookAt(targetPosition);
+            // Rotation (optional)
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            rb.MoveRotation(targetRotation);
 
-            // Move the enemy towards the player
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speedToMove * Time.deltaTime);
+            // Kraft anwenden
+            rb.AddForce(direction * speedToMove, ForceMode.Acceleration);
+
+            // Geschwindigkeit begrenzen
+            rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speedToMove);
         }
         else
         {

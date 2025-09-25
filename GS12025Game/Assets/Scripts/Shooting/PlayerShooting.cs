@@ -7,7 +7,8 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject bulletSpawnPoint;
     public float reloadtime = 2.0f;
-    public float fireRate = 0.2f; // Zeit in Sekunden zwischen den Schüssen
+    [Tooltip("Zeit in Sekunden zwischen den Schüssen")]
+    public float fireRate = 0.2f;
 
     private float nextFireTime = 0f; // Zeit, zu der der Spieler das nächste Mal schießen kann
     private bool hasAmmo;

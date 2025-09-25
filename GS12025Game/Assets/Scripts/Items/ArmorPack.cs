@@ -32,14 +32,17 @@ public class ArmorPack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerStats playerStats = playerTarget.GetComponent<PlayerStats>();
-        if (playerTarget != null)
+        if (other.gameObject == playerTarget)
         {
-            playerStats.ArmorReplenish(armorAmount);
-            Debug.Log("Player Armor replenish " + armorAmount + ". Current Armor: " + playerStats.GetCurrentArmor());
-            //Destroy after use of Armor pack
-            Destroy(gameObject);
+            PlayerStats playerStats = playerTarget.GetComponent<PlayerStats>();
+            if (playerTarget != null)
+            {
+                playerStats.ArmorReplenish(armorAmount);
+                Debug.Log("Player Armor replenish " + armorAmount + ". Current Armor: " + playerStats.GetCurrentArmor());
+                //Destroy after use of Armor pack
+                Destroy(gameObject);
+            }
         }
-    }
+    } 
 
 }
