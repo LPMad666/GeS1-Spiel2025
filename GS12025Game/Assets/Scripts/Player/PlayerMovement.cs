@@ -13,7 +13,12 @@ public class SimpleMovement : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded;
+    private Animator animator;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>(); // Holt die Animator-Komponente des GameObjects
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,21 +46,35 @@ public class SimpleMovement : MonoBehaviour
 
     void Movement()
     {
+        bool isMoving = false;
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, 0, speedTranslation * Time.deltaTime);
+            animator.SetFloat("Velocity", 1.0f);
+            isMoving = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(0, 0, -speedTranslation * Time.deltaTime);
+            animator.SetFloat("Velocity", 1.0f);
+            isMoving = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(-speedTranslation * Time.deltaTime, 0, 0);
+            animator.SetFloat("Velocity", 1.0f);
+            isMoving = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(speedTranslation * Time.deltaTime, 0, 0);
+            animator.SetFloat("Velocity", 1.0f);
+            isMoving = true;
+        }
+        if (!isMoving)
+        {
+            animator.SetFloat("Velocity", 0.0f);
         }
     }
 
