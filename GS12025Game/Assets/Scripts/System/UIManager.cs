@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
         {
             ScoreText.text = "Score: " + ScoreManager.instance.score;
         }
+
     }
 
     public void RestartLevel()

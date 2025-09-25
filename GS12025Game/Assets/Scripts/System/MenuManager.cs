@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+
+    public GameObject pauseMenu; // Referenz zum Pause Menu
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +21,31 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            OpenPauseMenu();
         }
+    }
+
+    void OpenPauseMenu()
+    {
+        pauseMenu.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        //Pause Menu öffnen
+        Debug.Log("Pause Menu opened");
+        Time.timeScale = 0f; //Spiel pausieren
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f; //Spiel fortsetzen
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game");
+        Application.Quit();
     }
 }
